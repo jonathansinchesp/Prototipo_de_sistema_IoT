@@ -16,7 +16,7 @@ const int UMBRAL_CRITICO_ANALOGICO = 2457;
 // ===== RED =====
 const char* WIFI_SSID = "Wokwi-GUEST";
 const char* WIFI_PASSWORD = "";
-const char* MQTT_SERVER = "://hivemq.com";  // 
+const char* MQTT_SERVER = "broker.hivemq.com";  // 
 
 // ===== OBJETOS MQTT =====
 WiFiClient espClient;
