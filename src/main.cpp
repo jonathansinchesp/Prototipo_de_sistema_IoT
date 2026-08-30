@@ -16,7 +16,7 @@ const int UMBRAL_CRITICO_ANALOGICO = 2457;
 // ===== RED =====
 const char* WIFI_SSID = "Wokwi-GUEST";
 const char* WIFI_PASSWORD = "";
-const char* MQTT_SERVER = "172.23.144.1";  // IP de Windows
+const char* MQTT_SERVER = "://hivemq.com";  // 
 
 // ===== OBJETOS MQTT =====
 WiFiClient espClient;
