@@ -1,0 +1,5 @@
+.pio/
+.vscode/
+*.csv
+infra/node-red/node_modules/
+infra/node-red/.npm/

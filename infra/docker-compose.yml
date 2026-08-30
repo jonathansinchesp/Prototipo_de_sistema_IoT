@@ -1,0 +1,22 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: estacion-mqtt
+    restart: always
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+  nodered:
+    image: nodered/node-red:latest
+    container_name: estacion-nodered
+    restart: always
+    depends_on:
+      - mosquitto
+    environment:
+      - TZ=America/Guayaquil
+      - FLOWS=flows.json
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./node-red:/data

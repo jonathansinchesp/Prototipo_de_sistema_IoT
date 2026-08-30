@@ -1,0 +1,12 @@
+module.exports = {
+    flowsFile: 'flows.json',
+    uihost: '0.0.0.0',
+    uiPort: process.env.PORT || 1880,
+    credentialSecret: false,
+    functionGlobalContext: {},
+    editorTheme: {
+        projects: {
+            enabled: false
+        }
+    }
+}

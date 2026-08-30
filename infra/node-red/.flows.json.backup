@@ -1,0 +1,563 @@
+[
+    {
+        "id": "edccd58e163e9dde",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6e47e280f5232d29",
+        "type": "mqtt-broker",
+        "name": "Mosquitto local",
+        "broker": "mosquitto",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "edf4bce14d9aa49d",
+        "type": "websocket-listener",
+        "path": "/ws/mediciones",
+        "wholemsg": "false"
+    },
+    {
+        "id": "3d7310ca4d13a3fe",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "8af8fc50c01a6ccb",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#fcfcfd",
+            "primary": "#0d74ce",
+            "bgPage": "#f9f9fb",
+            "groupBg": "#ffffff",
+            "groupOutline": "#d9d9e0"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "07b1460c44e8ffae",
+        "type": "ui-theme",
+        "name": "Theme 2",
+        "colors": {
+            "surface": "#21222c",
+            "primary": "#bd93f9",
+            "bgPage": "#282a36",
+            "groupBg": "#343746",
+            "groupOutline": "#44475a"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "44ee34acbc434bd0",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "3d7310ca4d13a3fe",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "07b1460c44e8ffae",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": true,
+        "disabled": false
+    },
+    {
+        "id": "844d558e0268b8fb",
+        "type": "ui-group",
+        "name": "            Prototipo de Deteccion de Gas",
+        "page": "44ee34acbc434bd0",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "fdbb9b7f621f2dd2",
+        "type": "mqtt in",
+        "z": "edccd58e163e9dde",
+        "name": "Mediciones Procesadas",
+        "topic": "edificio/planta1/sensores",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "6e47e280f5232d29",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "94f5bfabd2754d5d"
+            ]
+        ]
+    },
+    {
+        "id": "f45142a87dc8c4c4",
+        "type": "function",
+        "z": "edccd58e163e9dde",
+        "name": "Guardar ultima medicion",
+        "func": "flow.set('ultimaMedicion', msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 80,
+        "wires": [
+            [
+                "63ed82711fd17540",
+                "87686ad6c7aff354"
+            ]
+        ]
+    },
+    {
+        "id": "63ed82711fd17540",
+        "type": "debug",
+        "z": "edccd58e163e9dde",
+        "name": "Ver medicion",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "87686ad6c7aff354",
+        "type": "websocket out",
+        "z": "edccd58e163e9dde",
+        "name": "Enviar a React Native",
+        "server": "edf4bce14d9aa49d",
+        "client": "",
+        "x": 880,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "b493683e460a4479",
+        "type": "http in",
+        "z": "edccd58e163e9dde",
+        "name": "Obtener ultima medicion",
+        "url": "/api/mediciones/actuar",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 540,
+        "wires": [
+            [
+                "9022aa63fcc20c5d"
+            ]
+        ]
+    },
+    {
+        "id": "9022aa63fcc20c5d",
+        "type": "function",
+        "z": "edccd58e163e9dde",
+        "name": "Preparar la respuesta",
+        "func": "const ultima = flow.get('ultimaMedicion');\nmsg.headers = {\n    'Access-Control-Allow-Origin': '*',\n    'Content-Type': 'application/json'\n};\nmsg.statusCode = ultima ? 200 : 404;\nmsg.payload = ultima || { error: 'Aun no hay mediciones de gas' };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 540,
+        "wires": [
+            [
+                "c8826c3bb3401063"
+            ]
+        ]
+    },
+    {
+        "id": "c8826c3bb3401063",
+        "type": "http response",
+        "z": "edccd58e163e9dde",
+        "name": "JSON",
+        "statusCode": "",
+        "headers": {},
+        "x": 650,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "f770f6fcf1f91a2b",
+        "type": "http in",
+        "z": "edccd58e163e9dde",
+        "name": "Obener el estado del servicio",
+        "url": "/api/salud",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 640,
+        "wires": [
+            [
+                "47e5c3d8c96cc0fc"
+            ]
+        ]
+    },
+    {
+        "id": "47e5c3d8c96cc0fc",
+        "type": "function",
+        "z": "edccd58e163e9dde",
+        "name": "Estado del servicio",
+        "func": "msg.headers = {\n    'Access-Control-Allow-Origin': '*',\n    'Content-Type': 'application/json'\n};\nmsg.payload = {\n    servicio: 'node-red',\n    estado: 'ok',\n    haymediciones: Boolean(flow.get('ultimaMedicion'))\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 640,
+        "wires": [
+            [
+                "956a01f7e4327437"
+            ]
+        ]
+    },
+    {
+        "id": "956a01f7e4327437",
+        "type": "http response",
+        "z": "edccd58e163e9dde",
+        "name": "JSON SALUD",
+        "statusCode": "",
+        "headers": {},
+        "x": 660,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "d03c05435e9e21ab",
+        "type": "ui-gauge",
+        "z": "edccd58e163e9dde",
+        "name": "",
+        "group": "844d558e0268b8fb",
+        "order": 1,
+        "value": "payload.gas_ppm",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Nivel del Gas",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "ppm",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "601",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "2000",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 590,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4748abcd01138c14",
+        "type": "ui-text",
+        "z": "edccd58e163e9dde",
+        "group": "844d558e0268b8fb",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Concentración de Gas:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload.gas_ppm",
+        "valueType": "msg",
+        "x": 620,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "cf94bd9f436ed372",
+        "type": "ui-text",
+        "z": "edccd58e163e9dde",
+        "group": "844d558e0268b8fb",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Estado del Aire",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload.aire_ppm",
+        "valueType": "msg",
+        "x": 600,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "ba59661e1083f640",
+        "type": "ui-text",
+        "z": "edccd58e163e9dde",
+        "group": "844d558e0268b8fb",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Alerta del Sistema",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload.alarma",
+        "valueType": "msg",
+        "x": 610,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "6aaca62e338a73a2",
+        "type": "ui-text",
+        "z": "edccd58e163e9dde",
+        "group": "844d558e0268b8fb",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-right",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 770,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "06e1f8233c78714f",
+        "type": "function",
+        "z": "edccd58e163e9dde",
+        "name": "function 1",
+        "func": "// 1. Obtener el historial acumulado en el contexto del flujo (si está vacío, inicia limpio)\nlet historial = flow.get(\"historial_consola\") || \"\";\n\n// 2. Extraer las variables del objeto JSON que viene de Wokwi\nlet datos = msg.payload;\nlet estadoAlarma = datos.alarma ? \"ACTIVA \" : \"INACTIVA \";\n\n// 3. Construir el bloque de texto con la nueva línea de Calidad de Aire\nlet nuevoBloque = `<div style=\"font-family: monospace; font-size: 12px; color: #f4ececff; line-height: 1.4;\">` +\n                  `====================================<br>` +\n                  `<b>Contador:</b> [${datos.contador}]<br>` +\n                  `   <b>Gas:</b> ${datos.gas_ppm} ppm<br>` +\n                  `   <b>Aire:</b> ${datos.aire_ppm} ppm<br>` +\n                  `<b>Calidad de Aire:</b> ${datos.calidad_aire}<br>` +\n                  ` <b>Alarma de Gas:</b> ${estadoAlarma}<br>` +\n                  `====================================</div><br>`;\n\n// 4. Agregar el nuevo bloque al inicio del historial para que lo más nuevo aparezca arriba\nhistorial = nuevoBloque + historial;\n\n// 5. Opcional: Limitar el historial a las últimas 15 mediciones para no saturar el celular\nlet lineas = historial.split(\"<br><br>\");\nif (lineas.length > 15) {\n    historial = lineas.slice(0, 15).join(\"<br><br>\");\n}\n\n// 6. Guardar el nuevo historial en la memoria del flujo\nflow.set(\"historial_consola\", historial);\n\n// 7. Enviar el bloque completo de texto acumulado hacia el Dashboard\nmsg.payload = historial;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 300,
+        "wires": [
+            [
+                "6aaca62e338a73a2"
+            ]
+        ]
+    },
+    {
+        "id": "94f5bfabd2754d5d",
+        "type": "json",
+        "z": "edccd58e163e9dde",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 370,
+        "y": 80,
+        "wires": [
+            [
+                "f45142a87dc8c4c4",
+                "d03c05435e9e21ab",
+                "4748abcd01138c14",
+                "cf94bd9f436ed372",
+                "ba59661e1083f640",
+                "06e1f8233c78714f",
+                "11ccbccd2739f826"
+            ]
+        ]
+    },
+    {
+        "id": "11ccbccd2739f826",
+        "type": "ui-gauge",
+        "z": "edccd58e163e9dde",
+        "name": "Aire",
+        "group": "844d558e0268b8fb",
+        "order": 2,
+        "value": "payload.aire_ppm",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Calidad del Aire",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "ppm",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "801",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "1501",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "2000",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 590,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    }
+]

@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "author": "Jessica, Anthony, Jonathan",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 48, "left": -28.4, "attrs": {} },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "mq2",
+      "top": -126.1,
+      "left": -115.4,
+      "attrs": { "label": "MQ-2 (Gas)" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "mq135",
+      "top": -126.1,
+      "left": 47.8,
+      "attrs": { "label": "MQ-135 (Aire)" }
+    },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 60, "left": -142.2, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led_verde",
+      "top": 144,
+      "left": 138.2,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_rojo",
+      "top": 144,
+      "left": 215,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 234.3,
+      "left": 124.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 234.3,
+      "left": 201.6,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:GND.1", "mq2:GND", "black", [ "v0" ] ],
+    [ "esp:GND.1", "mq135:GND", "black", [ "v0" ] ],
+    [ "esp:3V3", "mq2:VCC", "red", [ "v0" ] ],
+    [ "esp:3V3", "mq135:VCC", "red", [ "v0" ] ],
+    [ "esp:D34", "mq2:SIG", "blue", [ "v0" ] ],
+    [ "esp:D35", "mq135:SIG", "orange", [ "v0" ] ],
+    [ "r1:1", "esp:GND.1", "black", [ "v0" ] ],
+    [ "r2:1", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led_verde:A", "esp:D12", "green", [ "v0" ] ],
+    [ "led_rojo:A", "esp:D14", "red", [ "v0" ] ],
+    [ "led_verde:C", "r1:2", "black", [ "v0" ] ],
+    [ "led_rojo:C", "r2:2", "black", [ "v0" ] ],
+    [ "buzzer:2", "esp:D13", "red", [ "v0" ] ],
+    [ "buzzer:1", "esp:GND.1", "black", [ "v48", "h9.6" ] ]
+  ],
+  "dependencies": {}
+}
