@@ -139,11 +139,12 @@ void loop() {
     }
 
     // ===== LÓGICA DE ALARMA =====
-    if (ppmGas > 600 || ppmAire > 600) {
+    if (ppmGas >= 601) {
       alarma = true;
     } else {
       alarma = false;
     }
+
 
     // ===== CONTROL DE ACTUADORES =====
     if (alarma) {

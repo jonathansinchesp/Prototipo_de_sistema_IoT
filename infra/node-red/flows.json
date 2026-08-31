@@ -11,7 +11,7 @@
         "id": "6e47e280f5232d29",
         "type": "mqtt-broker",
         "name": "Mosquitto local",
-        "broker": "mosquitto",
+        "broker": "broker.hivemq.com",
         "port": 1883,
         "clientid": "",
         "autoConnect": true,
@@ -348,7 +348,7 @@
                 "textType": "label"
             },
             {
-                "from": "601",
+                "from": "801",
                 "color": "#ea5353",
                 "text": "",
                 "textType": "label"

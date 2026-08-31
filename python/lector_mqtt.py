@@ -4,7 +4,7 @@ import csv
 import os
 
 # Configuración
-MQTT_HOST = "localhost"
+MQTT_HOST = "broker.hivemq.com"
 MQTT_PORT = 1883
 MQTT_TOPIC = "edificio/planta1/sensores"
 CSV_FILE_PATH = "data/datos_sensor.csv"

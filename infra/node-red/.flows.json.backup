@@ -348,7 +348,7 @@
                 "textType": "label"
             },
             {
-                "from": "601",
+                "from": "801",
                 "color": "#ea5353",
                 "text": "",
                 "textType": "label"
@@ -451,8 +451,8 @@
         "name": "",
         "label": "",
         "format": "{{msg.payload}}",
-        "layout": "row-right",
-        "style": false,
+        "layout": "row-center",
+        "style": true,
         "font": "",
         "fontSize": 16,
         "color": "#717171",

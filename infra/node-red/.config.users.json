@@ -21,15 +21,15 @@
                     "v": 4,
                     "tabs": [],
                     "primary": {
-                        "width": 310,
+                        "width": 300,
                         "top": {
                             "tabs": [
                                 "info",
                                 "help",
                                 "config",
                                 "context",
-                                "dashboard-2.0",
-                                "debug"
+                                "debug",
+                                "dashboard-2.0"
                             ],
                             "hidden": false,
                             "height": 517.594,
@@ -47,7 +47,7 @@
                             "tabs": [
                                 "explorer"
                             ],
-                            "height": 313.469,
+                            "height": 315.062,
                             "hidden": false,
                             "active": "explorer"
                         },
